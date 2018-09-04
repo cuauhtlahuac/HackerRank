@@ -2,34 +2,23 @@ function processData(input) {
     let lineEven = "";
     let lineOdd = "";
     let finalStr = "";
-    let init = 0;
-    let i = 0;
-    let arr = input.split("")
-    while(i<arr.length){
-      if(/[\n]/.test(arr[i])){
-          return init = i+1
-          break
-      }
-      i++;
-    }   
-    console.log("init = "+init)
-    for (let i = init; i < arr.length; i++) {
-        //console.log(arr[i])
-        if (/[a-zA-Z]/.test(arr[i]) && i % 2 === 0) {
-            lineEven += arr[i]
+    let arr = input.split("\n")
+    for (let i = 1; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (/[a-zA-Z]/.test(arr[i][j]) && j % 2 === 0) {
+                lineEven += arr[i][j]
+            } else if (/[a-zA-Z]/.test(arr[i][j]) && j % 2 !== 0) {
+                lineOdd += arr[i][j]
+            }
         }
-        if (/[a-zA-Z]/.test(arr[i]) && i % 2 !== 0) {
-            lineOdd += arr[i]
+        finalStr += lineEven + " " + lineOdd
+        lineEven = "";
+        lineOdd = "";
+        if(i !== arr.length){
+            finalStr += "\n"
         }
-        if (/[\n]/.test(arr[i])) {
-            finalStr += lineEven + " " + lineOdd + "\n"
-            lineEven = "";
-            lineOdd = "";
-        }
-
     }
-    finalStr += lineEven + " " + lineOdd
-    console.log(finalStr)
+    return console.log(finalStr)
 }
-let str = `2\nHacker\nRank`
+let str = "2\nHacker\nRank\nLeopark"
 processData(str)
