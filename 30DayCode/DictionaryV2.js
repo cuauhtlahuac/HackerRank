@@ -4,7 +4,7 @@ function processData(input) {
     const num = Number(arr[0])
     let nameTel = arr.slice(1, num + 1);
     let names = arr.slice(num + 1);
-    console.log(nameTel)
+    //console.log(nameTel)
     let objNameTel = {};
     nameTel.forEach((element,index)=>{
         let temp = []
@@ -13,21 +13,15 @@ function processData(input) {
         temp = []
     }
     )
-    console.log(objNameTel)
-    /*names.forEach((name)=>{
-        let finded = objNameTel.find((element,index)=>{
-            return element.name && element.name === name
-        }
-        )
-        if (finded) {
-            console.log(finded.name + " " + finded.tel)
+    //console.log(objNameTel)
+    names.forEach((name)=>{
+        if (objNameTel.hasOwnProperty(name)) {
+            console.log(name + "=" + objNameTel[name])
         } else {
-            console.log("#")
+            console.log("Not Founded")
         }
-
     }
     )
-*/
 }
 
 function busqueda1() {
@@ -45,6 +39,20 @@ function busqueda1() {
         }
         if (!finded) {
             console.log("Not found")
+        }
+    }
+    )
+}
+function busqueda2() {
+    names.forEach((name)=>{
+        let finded = objNameTel.find((element,index)=>{
+            return element.name && element.name === name
+        }
+        )
+        if (finded) {
+            console.log(finded.name + " " + finded.tel)
+        } else {
+            console.log("#")
         }
     }
     )
