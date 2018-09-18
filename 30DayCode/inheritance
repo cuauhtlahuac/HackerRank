@@ -1,0 +1,83 @@
+class Person {
+    constructor(firstName, lastName, identification) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.idNumber = identification;
+    }
+    
+    printPerson() {
+        console.log(
+            "Name: " + this.lastName + ", " + this.firstName 
+            + "\nID: " + this.idNumber
+        )
+    }
+}
+
+testScores = [100, 80]
+
+class Student extends Person {
+    
+    /*	
+    *   Class Constructor
+    *   
+    *   @param firstName - A string denoting the Person's first name.
+    *   @param lastName - A string denoting the Person's last name.
+    *   @param id - An integer denoting the Person's ID number.
+    *   @param scores - An array of integers denoting the Person's test scores.
+    */
+    // Write your constructor here
+
+    /*	
+    *   Method Name: calculate
+    *   @return A character denoting the grade.
+    */
+    // Write your method here
+        calculate(){
+        alert("calculate")
+    }
+    
+}
+
+let s = new Student("Nora", "Martinez", 5513, testScores)
+    s.printPerson()
+    s.calculate()
+    console.log('Grade: ' + s.calculate())
+    console.log(s)
+
+/*
+class Poligono {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  
+  get area() {
+    return this.calcArea();
+  }
+
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const cuadrado = new Poligono(10, 10);
+
+console.log(cuadrado.area);
+
+function Animal (nombre) {
+  this.nombre = nombre;
+}
+Animal.prototype.hablar = function () {
+  console.log(this.nombre + 'hace un ruido.');
+}
+
+class Perro extends Animal {
+  hablar() {
+    super.hablar();
+    console.log(this.nombre + ' ladra.');
+  }
+}
+
+var p = new Perro('Mitzie');
+p.hablar();
+*/
