@@ -3,20 +3,18 @@ class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.idNumber = identification;
+
     }
-    
+
     printPerson() {
-        console.log(
-            "Name: " + this.lastName + ", " + this.firstName 
-            + "\nID: " + this.idNumber
-        )
+        console.log("Name: " + this.lastName + ", " + this.firstName + "\nID: " + this.idNumber)
     }
 }
 
-testScores = [100, 80]
+testScoresMine = [70, 50]
 
 class Student extends Person {
-    
+
     /*	
     *   Class Constructor
     *   
@@ -26,23 +24,46 @@ class Student extends Person {
     *   @param scores - An array of integers denoting the Person's test scores.
     */
     // Write your constructor here
-
+    constructor(firstName, lastName, identification, testScores) {
+        super(firstName, lastName, identification)  
+        this.testScores = testScores;
+    }
     /*	
     *   Method Name: calculate
     *   @return A character denoting the grade.
     */
     // Write your method here
-        calculate(){
-        alert("calculate")
+    calculate() {
+        let GradeSum = 0;  
+        for(let i = 0; i < this.testScores.length; i++){
+            GradeSum += this.testScores[i]  
+        }
+        let gradingScale = "";
+        const AvgGrade = GradeSum / this.testScores.length;
+        console.log(AvgGrade)
+        if(AvgGrade >= 90){
+          gradingScale = "O";
+        }else if(AvgGrade < 90 && AvgGrade >= 80 ){
+          gradingScale = "E"
+        }else if(AvgGrade < 80 && AvgGrade >= 70){
+          gradingScale = "A"
+        }else if(AvgGrade < 70 && AvgGrade >= 55){
+          gradingScale = "P"
+        }else if(AvgGrade < 55 && AvgGrade >= 40){
+          gradingScale = "D"
+        }else if(AvgGrade < 40){
+          gradingScale = "T"
+        }
+        return gradingScale;
     }
-    
+
 }
 
-let s = new Student("Nora", "Martinez", 5513, testScores)
-    s.printPerson()
-    s.calculate()
-    console.log('Grade: ' + s.calculate())
-    console.log(s)
+let s = new Student("Nora","Martinez",5513,testScoresMine)
+s.printPerson()
+s.calculate()
+console.log('Grade: ' + s.calculate())
+console.log(s)
 
 /*
 class Poligono {
