@@ -23,57 +23,7 @@
 */
 
 function inArray(array1, array2) {
-	let isInItList = [];
-
-	array1.forEach(str => {
-		const isInIt = findInIt(str, array2);
-
-		if (isInIt) {
-			isInItList.push(str);
-		}
-	});
-
-	return isInItList.sort();
-}
-
-function findInIt(str, arr) {
-	let splitTwo,
-		eureka = false;
-
-	arr.forEach(item => {
-		if (eureka) {
-			return null;
-		} else {
-			splitOne = str.split('');
-			splitTwo = item.split('');
-
-			if (splitTwo.indexOf(splitOne[0]) >= 0) {
-				// Si lo encuentra, pero es el primero
-				const index = splitTwo.indexOf(splitOne[0]);
-
-				if (splitOne[1] === splitTwo[index + 1]) {
-					let indexOne = 2;
-
-					if (indexOne === splitOne.length) {
-						eureka = true;
-					} else {
-						let indexTwo = index + 2;
-						for (indexOne; indexOne <= splitOne.length; indexOne++) {
-							if (splitOne[indexOne] === splitTwo[indexTwo]) {
-
-								if ((indexOne = splitOne.length)) {
-									eureka = true;
-								}
-							}
-
-							indexTwo++;
-						}
-					}
-				}
-			}
-		}
-	});
-	return eureka;
+	return array1.filter(a1 => array2.find(a2 => a2.match(a1))).sort();
 }
 
 console.log(
